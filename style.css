@@ -1,0 +1,133 @@
+:root {
+    --bc: #0e0d0f;
+    --primary: rgb(161, 166, 252);
+    --white: #ffffff;
+    --black: #000000;
+    /* Colors */
+    --red: #da2c4d;
+    --orange: #fd7e14;
+    --yellow: #f8ab37;
+    --yellow-bright: #ffc107;
+    --light-green: #24e33a;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    /* Gray Colors */
+    --bc-gray: #ede8e4;
+    --gray: #9e9d9b;
+    --gray-dark: #1c1a19;
+    /* Gradients */
+    --rainbow: linear-gradient(90deg, rgba(245,96,117,1) 0%, rgba(252,210,29,1) 14%, rgba(246,237,105,1) 28%, rgba(127,246,105,1) 43%, rgba(105,246,176,1) 55%, rgba(105,231,246,1) 69%, rgba(105,150,246,1) 85%, rgba(150,105,246,1) 100%);
+    /* Sizes */
+    --button: 1.22rem;
+    /* Fonts */
+    --font-main: "Poppins";
+}
+* {
+    box-sizing: border-box;
+    user-select: none;
+    cursor: none;
+}
+html, body {
+    margin: 0;
+    width: 100%;
+    font-family: var(--font-main);
+    background-color: var(--bc);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+main {
+    height: 100vh;
+}
+/* Global classes */
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Button 1 */
+.button-wrapper {
+    margin: 1em 0;
+}
+.button-svg {
+    fill: var(--white);
+    height: calc(var(--button) - .1rem);
+}
+.button, .btn-secondary {
+    margin: 0;
+    width: 100%;
+    position: relative;
+    padding: 1.2em 1.8em;
+    letter-spacing: .1em;
+    text-align: center;
+    color: var(--bc);
+    font-size: var(--button);
+    background: var(--rainbow);
+    background-size: 500%;
+    border-radius: 5em;
+    border: none;
+    transform: scaleX(1);
+    transition: transform .3s cubic-bezier(.175,.885,.32,1.275), filter .3s cubic-bezier(.175,.885,.32,1.275), bottom .3s cubic-bezier(.175,.885,.32,1.275), background-position 3s cubic-bezier(.455,.03,.515,.955), -webkit-transform .3s cubic-bezier(.175,.885,.32,1.275), -webkit-filter .3s cubic-bezier(.175,.885,.32,1.275);
+}
+.button {
+    transition: transform .3s cubic-bezier(.175,.885,.32,1.275), bottom .3s cubic-bezier(.175,.885,.32,1.275), background-position 3s cubic-bezier(.455,.03,.515,.955), -webkit-transform .3s cubic-bezier(.175,.885,.32,1.275);
+}
+.button, .button .btn-secondary {
+    background-position: 0 50%;
+    bottom: 0;
+}
+.button .btn-secondary {
+    left: 0;
+    width: 100%;
+    position: absolute;
+    filter: blur(1rem);
+    opacity: .65;
+    z-index: -1;
+    transform: scale3d(.85, .85, 1);
+    transition: transform .3s cubic-bezier(.175,.885,.32,1.275), filter .3s cubic-bezier(.175,.885,.32,1.275), bottom .3s cubic-bezier(.175,.885,.32,1.275), background-position 3s cubic-bezier(.455,.03,.515,.955), -webkit-transform .3s cubic-bezier(.175,.885,.32,1.275), -webkit-filter .3s cubic-bezier(.175,.885,.32,1.275);
+}
+.button:focus {
+    outline: none;
+}
+.button:hover {
+    transform: scale3d(1.1, 1.1, 1);
+    background-position: 100% 50%;
+    outline: none;
+    bottom: 2px;
+}
+.btn-secondary, .button:hover .btn-secondary {
+    background-position: 100% 50%;
+    filter: blur(1.6rem);
+    bottom: -5px;
+}
+/* Ripple */
+span.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+    background-color: rgba(255, 255, 255, .85);
+}
+/* Ripple Animation */
+@keyframes ripple {
+    to {
+        transform: scale(.65);
+        opacity: 0;
+    }
+}
+/* Cursor */
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    transition: transform .3s cubic-bezier(.175, .885, .32, 1.175);
+    z-index: 999;
+}
